@@ -10,37 +10,82 @@
       background-color: #fff;
       color: #333;
     }
+
     header {
-      background: #f8e8ec;
+      background: url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9') no-repeat center/cover;
+      height: 400px;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+    }
+
+    header h1 {
+      font-size: 45px;
+      margin: 0;
+    }
+
+    header p {
+      font-size: 20px;
+    }
+
+    section {
       padding: 40px;
       text-align: center;
     }
-    header h1 {
-      margin: 0;
-      font-size: 40px;
+
+    h2 {
+      margin-bottom: 20px;
     }
-    header p {
-      font-size: 18px;
-      color: #777;
+
+    .productos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
     }
-    .btn {
+
+    .producto {
+      border: 1px solid #eee;
+      border-radius: 10px;
+      padding: 15px;
+      transition: 0.3s;
+    }
+
+    .producto:hover {
+      transform: scale(1.05);
+    }
+
+    .producto img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .precio {
+      color: #e91e63;
+      font-weight: bold;
+    }
+
+    .instagram {
+      background: #f8e8ec;
+      padding: 40px;
+    }
+
+    .instagram a {
       display: inline-block;
-      margin-top: 15px;
+      margin-top: 10px;
       padding: 10px 20px;
       background: #e91e63;
       color: white;
       text-decoration: none;
       border-radius: 5px;
     }
-    section {
-      padding: 40px;
-      text-align: center;
-    }
+
     footer {
       background: #f8e8ec;
       text-align: center;
       padding: 20px;
-      font-size: 14px;
     }
   </style>
 </head>
@@ -49,28 +94,89 @@
 <header>
   <h1>ValeryMKP</h1>
   <p>Brilla a tu manera</p>
-  <a href="#" class="btn">Comprar ahora</a>
 </header>
 
 <section>
   <h2>Sobre nosotros</h2>
   <p>
-    ValeryMKP nace de la idea de que la belleza debe sentirse auténtica y libre. 
+    ValeryMKP nace de la idea de que la belleza debe sentirse auténtica y libre.
     Creemos en resaltar lo natural, la confianza y el estilo propio.
   </p>
 </section>
 
+<!-- SOMBRAS -->
 <section>
-  <h2>Productos</h2>
-  <p>
-    Descubre maquillaje diseñado para cada estilo, desde lo natural hasta lo más atrevido.
-  </p>
+  <h2>Paletas de sombras</h2>
+  <div class="productos">
+    <div class="producto">
+      <img src="https://images.unsplash.com/photo-1583241800978-0d6b1df2c7cf">
+      <h3>Palette Glow</h3>
+      <p class="precio">$299 MXN</p>
+    </div>
+    <div class="producto">
+      <img src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb">
+      <h3>Sunset Eyes</h3>
+      <p class="precio">$349 MXN</p>
+    </div>
+  </div>
 </section>
 
+<!-- BASES -->
 <section>
-  <h2>Opiniones</h2>
-  <p>"Me encantó la calidad, volveré a comprar."</p>
-  <p>"ValeryMKP es mi marca favorita."</p>
+  <h2>Bases</h2>
+  <div class="productos">
+    <div class="producto">
+      <img src="https://images.unsplash.com/photo-1596464716127-f2a82984de30">
+      <h3>Skin Perfect</h3>
+      <p class="precio">$279 MXN</p>
+    </div>
+    <div class="producto">
+      <img src="https://images.unsplash.com/photo-1585386959984-a4155223fba1">
+      <h3>Natural Cover</h3>
+      <p class="precio">$259 MXN</p>
+    </div>
+  </div>
+</section>
+
+<!-- RIMEL -->
+<section>
+  <h2>Rímel</h2>
+  <div class="productos">
+    <div class="producto">
+      <img src="https://images.unsplash.com/photo-1583001931096-959e9a1a6223">
+      <h3>Lash Queen</h3>
+      <p class="precio">$199 MXN</p>
+    </div>
+    <div class="producto">
+      <img src="https://images.unsplash.com/photo-1600185365483-26d7b0b4c0d7">
+      <h3>Volume Max</h3>
+      <p class="precio">$189 MXN</p>
+    </div>
+  </div>
+</section>
+
+<!-- LABIALES -->
+<section>
+  <h2>Labiales</h2>
+  <div class="productos">
+    <div class="producto">
+      <img src="https://images.unsplash.com/photo-1586495777744-4413f21062fa">
+      <h3>Velvet Lips</h3>
+      <p class="precio">$149 MXN</p>
+    </div>
+    <div class="producto">
+      <img src="https://images.unsplash.com/photo-1585386959984-a4155223fba1">
+      <h3>Pink Kiss</h3>
+      <p class="precio">$139 MXN</p>
+    </div>
+  </div>
+</section>
+
+<!-- INSTAGRAM -->
+<section class="instagram">
+  <h2>Contacto</h2>
+  <p>Síguenos en Instagram para más contenido y novedades 💄</p>
+  <a href="https://instagram.com/TU_USUARIO" target="_blank">Ir a Instagram</a>
 </section>
 
 <footer>
