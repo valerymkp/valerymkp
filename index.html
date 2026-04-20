@@ -179,13 +179,18 @@ button {
   color: white;
   border-radius: 5px;
   cursor: pointer;
+  margin-top: 5px;
+}
+
+.total {
+  font-weight: bold;
+  margin-top: 15px;
 }
 </style>
 </head>
 
 <body>
 
-<!-- MENÚ -->
 <nav>
   <a href="#sombras">Sombras</a>
   <a href="#bases">Bases</a>
@@ -258,7 +263,6 @@ button {
 </div>
 </section>
 
-<!-- CONTACTO -->
 <section id="contacto" class="instagram">
 <h2>Contacto</h2>
 <p>Para realizar tu pedido comunícate con nosotros por Instagram.</p>
@@ -269,6 +273,8 @@ button {
 <section id="carrito">
   <h2>Carrito de compras 🛒</h2>
   <ul id="lista-carrito"></ul>
+  <p class="total">Total: $<span id="total">0</span> MXN</p>
+  <button onclick="enviarWhatsApp()">Comprar por WhatsApp 📲</button>
 </section>
 
 <footer>
@@ -292,9 +298,9 @@ function openModal(n,p,d){
   document.getElementById('modal').style.display='block';
   document.getElementById('titulo').innerText=n;
   document.getElementById('precio').innerText=p;
+
   document.getElementById('descripcion').innerHTML = `
     ${d}<br><br>
-
     <label>Selecciona tono:</label><br>
     <select id="tono">
       <option>Claro</option>
@@ -302,33 +308,61 @@ function openModal(n,p,d){
       <option>Oscuro</option>
     </select>
     <br><br>
-
     <button onclick="agregarCarrito('${n}','${p}')">Agregar al carrito 🛒</button>
   `;
 }
 
 function agregarCarrito(nombre, precio){
   let tono = document.getElementById('tono').value;
+  let precioNum = parseInt(precio.replace('$',''));
 
-  carrito.push({
-    nombre: nombre,
-    precio: precio,
-    tono: tono
-  });
-
+  carrito.push({nombre, precio, precioNum, tono});
   actualizarCarrito();
   closeModal();
 }
 
 function actualizarCarrito(){
   let lista = document.getElementById('lista-carrito');
+  let total = 0;
   lista.innerHTML = "";
 
-  carrito.forEach((item)=>{
+  carrito.forEach((item, index)=>{
+    total += item.precioNum;
     let li = document.createElement('li');
-    li.innerText = item.nombre + " - " + item.precio + " - " + item.tono;
+    li.innerHTML = `
+      ${item.nombre} - ${item.precio} - ${item.tono}
+      <br>
+      <button onclick="eliminar(${index})">Eliminar ❌</button>
+    `;
     lista.appendChild(li);
   });
+
+  document.getElementById('total').innerText = total;
+}
+
+function eliminar(index){
+  carrito.splice(index,1);
+  actualizarCarrito();
+}
+
+function enviarWhatsApp(){
+  if(carrito.length === 0){
+    alert("Tu carrito está vacío");
+    return;
+  }
+
+  let mensaje = "Hola, quiero comprar:%0A";
+
+  carrito.forEach(item=>{
+    mensaje += `- ${item.nombre} (${item.tono}) ${item.precio}%0A`;
+  });
+
+  let total = document.getElementById('total').innerText;
+  mensaje += `%0ATotal: $${total} MXN`;
+
+  let telefono = "5212291119616";
+
+  window.open(`https://wa.me/${telefono}?text=${mensaje}`);
 }
 
 function closeModal(){
