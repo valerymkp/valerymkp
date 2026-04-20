@@ -29,6 +29,10 @@ nav a {
   font-size: 14px;
 }
 
+nav a:hover {
+  color: #e91e63;
+}
+
 /* HEADER */
 header {
   position: relative;
@@ -53,10 +57,23 @@ header::before {
   text-align: center;
 }
 
+header h1 {
+  font-size: 50px;
+  margin: 0;
+}
+
+header p {
+  font-size: 22px;
+}
+
 /* SECCIONES */
 section {
   padding: 50px;
   text-align: center;
+}
+
+h2 {
+  margin-bottom: 30px;
 }
 
 /* PRODUCTOS */
@@ -82,6 +99,7 @@ section {
   width: 100%;
   height: 200px;
   object-fit: cover;
+  border-radius: 10px;
 }
 
 .precio {
@@ -89,10 +107,33 @@ section {
   font-weight: bold;
 }
 
+/* INSTAGRAM */
+.instagram {
+  background: #f8e8ec;
+}
+
+.instagram a {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 12px 25px;
+  background: #e91e63;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+footer {
+  background: #f8e8ec;
+  padding: 20px;
+}
+
 /* MODAL */
 .modal {
   display: none;
   position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
   width: 100%;
   height: 100%;
   background: rgba(0,0,0,0.6);
@@ -107,144 +148,191 @@ section {
   border-radius: 10px;
 }
 
-/* COLORES */
-.color-opciones {
-  margin: 10px 0;
-}
-.color {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  margin: 5px;
+.close {
+  float: right;
   cursor: pointer;
-  border: 2px solid transparent;
-}
-.color.selected {
-  border: 2px solid black;
+  font-size: 20px;
 }
 
 /* CARRITO */
-#cart {
-  display: none;
-  position: fixed;
-  right: 0;
-  top: 0;
-  width: 300px;
-  height: 100%;
+#carrito {
+  background: #fff0f5;
+}
+
+#carrito ul {
+  list-style: none;
+  padding: 0;
+}
+
+#carrito li {
+  padding: 10px;
+  margin: 5px;
   background: white;
-  box-shadow: -2px 0 10px rgba(0,0,0,0.2);
-  padding: 20px;
-  overflow: auto;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+button {
+  padding: 10px 15px;
+  border: none;
+  background: #e91e63;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
 }
 </style>
 </head>
 
 <body>
 
+<!-- MENÚ -->
 <nav>
   <a href="#sombras">Sombras</a>
   <a href="#bases">Bases</a>
   <a href="#rimel">Rímel</a>
   <a href="#labiales">Labiales</a>
   <a href="#contacto">Contacto</a>
-  <a href="#" onclick="toggleCart()">Carrito (<span id="cart-count">0</span>)</a>
+  <a href="#carrito">Carrito 🛒</a>
 </nav>
 
 <header>
-<div class="header-content">
-<h1>ValeryMKP</h1>
-<p>Brilla a tu manera</p>
-</div>
+  <div class="header-content">
+    <h1>ValeryMKP</h1>
+    <p>Brilla a tu manera</p>
+  </div>
 </header>
 
 <section>
-<h2>Sobre nosotros</h2>
-<p>Somos una marca dedicada a resaltar la belleza natural a través de productos diseñados para cada estilo y personalidad.</p>
+  <h2>Sobre nosotros</h2>
+  <p>
+  Somos una marca dedicada a resaltar la belleza natural a través de productos diseñados para cada estilo y personalidad. 
+  En ValeryMKP buscamos ofrecer una experiencia sofisticada, donde la elegancia y la autenticidad se reflejan en cada detalle.
+  </p>
 </section>
 
-<!-- PRODUCTOS (igual que los tuyos, no los cambio) -->
+<!-- SOMBRAS -->
 <section id="sombras">
 <h2>Paletas de sombras</h2>
 <div class="productos">
-<div class="producto" onclick="openModal('Nude Glow','$299 MXN','Paleta elegante')"><img src="paleta1.jfif"><h3>Nude Glow</h3><p class="precio">$299 MXN</p></div>
-<div class="producto" onclick="openModal('Sunset Vibe','$349 MXN','Inspirada en atardeceres')"><img src="paleta2.jfif"><h3>Sunset Vibe</h3><p class="precio">$349 MXN</p></div>
+<div class="producto" onclick="openModal('Nude Glow','$299 MXN','Paleta de tonos neutros con acabado elegante.')"><img src="paleta1.jfif"><h3>Nude Glow</h3><p class="precio">$299 MXN</p></div>
+<div class="producto" onclick="openModal('Sunset Vibe','$349 MXN','Inspirada en atardeceres.')"><img src="paleta2.jfif"><h3>Sunset Vibe</h3><p class="precio">$349 MXN</p></div>
+<div class="producto" onclick="openModal('Pink Dream','$320 MXN','Tonos rosados suaves.')"><img src="paleta3.jfif"><h3>Pink Dream</h3><p class="precio">$320 MXN</p></div>
+<div class="producto" onclick="openModal('Soft Glam','$310 MXN','Look natural.')"><img src="paleta4.jfif"><h3>Soft Glam</h3><p class="precio">$310 MXN</p></div>
+<div class="producto" onclick="openModal('Golden Touch','$360 MXN','Acabado luminoso.')"><img src="paleta5.jfif"><h3>Golden Touch</h3><p class="precio">$360 MXN</p></div>
 </div>
 </section>
 
-<!-- MODAL -->
-<div id="modal" class="modal">
-<div class="modal-content">
-<span onclick="closeModal()" style="float:right;cursor:pointer;">&times;</span>
-<h3 id="titulo"></h3>
-<p id="precio"></p>
-<p id="descripcion"></p>
+<!-- BASES -->
+<section id="bases">
+<h2>Bases</h2>
+<div class="productos">
+<div class="producto" onclick="openModal('Skin Perfect','$279 MXN','Cobertura ligera.')"><img src="base1.jfif"><h3>Skin Perfect</h3><p class="precio">$279 MXN</p></div>
+<div class="producto" onclick="openModal('Natural Skin','$259 MXN','Efecto natural.')"><img src="base2.jfif"><h3>Natural Skin</h3><p class="precio">$259 MXN</p></div>
+<div class="producto" onclick="openModal('Velvet Base','$289 MXN','Textura suave.')"><img src="base3.jfif"><h3>Velvet Base</h3><p class="precio">$289 MXN</p></div>
+<div class="producto" onclick="openModal('Matte Cover','$269 MXN','Alta cobertura.')"><img src="base4.jfif"><h3>Matte Cover</h3><p class="precio">$269 MXN</p></div>
+<div class="producto" onclick="openModal('Glow Finish','$299 MXN','Acabado luminoso.')"><img src="base5.jfif"><h3>Glow Finish</h3><p class="precio">$299 MXN</p></div>
+</div>
+</section>
 
-<!-- COLORES -->
-<div class="color-opciones">
-<p>Selecciona tono:</p>
-<div class="color" style="background:#f5c6aa" onclick="selectColor(this,'Beige')"></div>
-<div class="color" style="background:#d89b7c" onclick="selectColor(this,'Medium')"></div>
-<div class="color" style="background:#8a5a44" onclick="selectColor(this,'Dark')"></div>
+<!-- RIMEL -->
+<section id="rimel">
+<h2>Rímel</h2>
+<div class="productos">
+<div class="producto" onclick="openModal('Lash Queen','$199 MXN','Define pestañas.')"><img src="rimel1.jfif"><h3>Lash Queen</h3><p class="precio">$199 MXN</p></div>
+<div class="producto" onclick="openModal('Volume Max','$189 MXN','Volumen intenso.')"><img src="rimel2.jfif"><h3>Volume Max</h3><p class="precio">$189 MXN</p></div>
+<div class="producto" onclick="openModal('Ultra Lash','$210 MXN','Alarga pestañas.')"><img src="rimel3.jfif"><h3>Ultra Lash</h3><p class="precio">$210 MXN</p></div>
+<div class="producto" onclick="openModal('Bold Eyes','$195 MXN','Impacto visual.')"><img src="rimel4.jfif"><h3>Bold Eyes</h3><p class="precio">$195 MXN</p></div>
+<div class="producto" onclick="openModal('Extreme Look','$220 MXN','Máximo volumen.')"><img src="rimel5.jfif"><h3>Extreme Look</h3><p class="precio">$220 MXN</p></div>
 </div>
+</section>
 
-<button onclick="addToCart()">Agregar al carrito</button>
+<!-- LABIALES -->
+<section id="labiales">
+<h2>Labiales</h2>
+<div class="productos">
+<div class="producto" onclick="openModal('Velvet Lips','$149 MXN','Acabado aterciopelado.')"><img src="labial1.jfif"><h3>Velvet Lips</h3><p class="precio">$149 MXN</p></div>
+<div class="producto" onclick="openModal('Pink Kiss','$139 MXN','Tono suave.')"><img src="labial2.jfif"><h3>Pink Kiss</h3><p class="precio">$139 MXN</p></div>
+<div class="producto" onclick="openModal('Red Passion','$159 MXN','Color intenso.')"><img src="labial3.jfif"><h3>Red Passion</h3><p class="precio">$159 MXN</p></div>
+<div class="producto" onclick="openModal('Soft Nude','$145 MXN','Look natural.')"><img src="labial4.jfif"><h3>Soft Nude</h3><p class="precio">$145 MXN</p></div>
+<div class="producto" onclick="openModal('Gloss Shine','$130 MXN','Brillo ligero.')"><img src="labial5.jfif"><h3>Gloss Shine</h3><p class="precio">$130 MXN</p></div>
 </div>
-</div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto" class="instagram">
+<h2>Contacto</h2>
+<p>Para realizar tu pedido comunícate con nosotros por Instagram.</p>
+<a href="https://instagram.com/valery.mkp" target="_blank">Ir a Instagram</a>
+</section>
 
 <!-- CARRITO -->
-<div id="cart">
-<h3>Carrito</h3>
-<ul id="cart-items"></ul>
-<p>Total: $<span id="total">0</span> MXN</p>
-<button onclick="toggleCart()">Cerrar</button>
+<section id="carrito">
+  <h2>Carrito de compras 🛒</h2>
+  <ul id="lista-carrito"></ul>
+</section>
+
+<footer>
+<p>© 2026 ValeryMKP Beauty</p>
+</footer>
+
+<!-- MODAL -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h3 id="titulo"></h3>
+    <p id="precio"></p>
+    <p id="descripcion"></p>
+  </div>
 </div>
 
 <script>
-let cart = [];
-let currentProduct = {};
-let selectedColor = "Default";
+let carrito = [];
 
 function openModal(n,p,d){
   document.getElementById('modal').style.display='block';
   document.getElementById('titulo').innerText=n;
   document.getElementById('precio').innerText=p;
-  document.getElementById('descripcion').innerText=d;
-  currentProduct = {nombre:n, precio: parseInt(p)};
+  document.getElementById('descripcion').innerHTML = `
+    ${d}<br><br>
+
+    <label>Selecciona tono:</label><br>
+    <select id="tono">
+      <option>Claro</option>
+      <option>Medio</option>
+      <option>Oscuro</option>
+    </select>
+    <br><br>
+
+    <button onclick="agregarCarrito('${n}','${p}')">Agregar al carrito 🛒</button>
+  `;
+}
+
+function agregarCarrito(nombre, precio){
+  let tono = document.getElementById('tono').value;
+
+  carrito.push({
+    nombre: nombre,
+    precio: precio,
+    tono: tono
+  });
+
+  actualizarCarrito();
+  closeModal();
+}
+
+function actualizarCarrito(){
+  let lista = document.getElementById('lista-carrito');
+  lista.innerHTML = "";
+
+  carrito.forEach((item)=>{
+    let li = document.createElement('li');
+    li.innerText = item.nombre + " - " + item.precio + " - " + item.tono;
+    lista.appendChild(li);
+  });
 }
 
 function closeModal(){
   document.getElementById('modal').style.display='none';
-}
-
-function selectColor(el,color){
-  document.querySelectorAll('.color').forEach(c=>c.classList.remove('selected'));
-  el.classList.add('selected');
-  selectedColor = color;
-}
-
-function addToCart(){
-  let producto = {
-    nombre: currentProduct.nombre,
-    precio: currentProduct.precio,
-    color: selectedColor
-  };
-
-  cart.push(producto);
-
-  let li = document.createElement('li');
-  li.innerText = producto.nombre + " ("+producto.color+") - $" + producto.precio;
-  document.getElementById('cart-items').appendChild(li);
-
-  document.getElementById('total').innerText =
-    parseInt(document.getElementById('total').innerText) + producto.precio;
-
-  document.getElementById('cart-count').innerText = cart.length;
-}
-
-function toggleCart(){
-  let c = document.getElementById('cart');
-  c.style.display = c.style.display === 'none' ? 'block' : 'none';
 }
 
 window.onclick = function(e){
