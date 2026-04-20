@@ -4,39 +4,35 @@
 <meta charset="UTF-8">
 <title>ValeryMKP</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins&display=swap" rel="stylesheet">
 
 <style>
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background: #ffffff;
-  color: #222;
+  background: #fff7fa;
+  color: #333;
 }
 
-/* NAVBAR */
+/* NAV */
 nav {
   position: fixed;
-  top: 0;
   width: 100%;
   background: white;
-  display: flex;
-  justify-content: center;
-  gap: 30px;
   padding: 15px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  text-align: center;
   z-index: 1000;
 }
 
 nav a {
+  margin: 0 15px;
   text-decoration: none;
-  color: #333;
+  color: #444;
   font-size: 14px;
-  letter-spacing: 1px;
 }
 
 nav a:hover {
-  color: #c89aa5;
+  color: #e91e63;
 }
 
 /* HEADER */
@@ -48,41 +44,37 @@ header {
   align-items: center;
 }
 
-.header-content {
-  text-align: center;
-  color: white;
-  background: rgba(0,0,0,0.4);
-  padding: 20px 40px;
-}
-
 header h1 {
   font-family: 'Playfair Display', serif;
   font-size: 60px;
+  color: white;
   margin: 0;
 }
 
-/* SECTIONS */
+/* SECCIONES */
 section {
-  padding: 100px 40px;
+  padding: 90px 40px;
   text-align: center;
 }
 
 h2 {
   font-family: 'Playfair Display', serif;
-  font-size: 30px;
-  margin-bottom: 40px;
+  color: #e91e63;
 }
 
-/* PRODUCTS */
+/* PRODUCTOS */
 .productos {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 25px;
+  gap: 20px;
 }
 
 .producto {
-  cursor: pointer;
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
   transition: 0.3s;
+  cursor: pointer;
 }
 
 .producto:hover {
@@ -99,16 +91,12 @@ h2 {
 .about {
   max-width: 600px;
   margin: auto;
-  line-height: 1.6;
 }
 
 /* MODAL */
 .modal {
   display: none;
   position: fixed;
-  z-index: 2000;
-  left: 0;
-  top: 0;
   width: 100%;
   height: 100%;
   background: rgba(0,0,0,0.6);
@@ -117,15 +105,8 @@ h2 {
 .modal-content {
   background: white;
   margin: 10% auto;
-  padding: 30px;
+  padding: 20px;
   width: 300px;
-  text-align: center;
-  animation: fade 0.3s;
-}
-
-@keyframes fade {
-  from {opacity: 0;}
-  to {opacity: 1;}
 }
 
 .close {
@@ -133,22 +114,16 @@ h2 {
   cursor: pointer;
 }
 
-/* INSTAGRAM */
+/* CONTACTO */
 .instagram {
-  background: #f5f5f5;
+  background: #ffe4ec;
 }
 
 .instagram a {
-  display: inline-block;
-  margin-top: 15px;
   padding: 10px 20px;
-  border: 1px solid black;
+  border: 1px solid #e91e63;
+  color: #e91e63;
   text-decoration: none;
-  color: black;
-}
-
-footer {
-  padding: 20px;
 }
 </style>
 </head>
@@ -164,26 +139,25 @@ footer {
 </nav>
 
 <header>
-  <div class="header-content">
-    <h1>ValeryMKP</h1>
-  </div>
+  <h1>ValeryMKP</h1>
 </header>
 
 <section class="about">
 <h2>Sobre nosotros</h2>
-<p>
-Somos una marca dedicada a resaltar la belleza natural a través de productos diseñados para cada estilo y personalidad. 
-En ValeryMKP buscamos ofrecer una experiencia sofisticada, donde la elegancia y la autenticidad se reflejan en cada detalle.
-</p>
+<p>Somos una marca dedicada a resaltar la belleza natural, ofreciendo productos diseñados para cada estilo y personalidad.</p>
 </section>
 
 <!-- SOMBRAS -->
 <section id="sombras">
 <h2>Paletas de sombras</h2>
 <div class="productos">
-<div class="producto" onclick="openModal('Nude Glow','$299','Paleta de tonos neutros para un acabado elegante.')"><img src="paleta1.jfif"></div>
-<div class="producto" onclick="openModal('Sunset Vibe','$349','Colores cálidos inspirados en atardeceres.')"><img src="paleta2.jfif"></div>
-<div class="producto" onclick="openModal('Pink Dream','$320','Tonos rosados suaves y sofisticados.')"><img src="paleta3.jfif"></div>
+
+<div class="producto" onclick="openModal('Nude Glow','$299','Paleta de tonos neutros elegantes.')"><img src="paleta1.jfif"></div>
+<div class="producto" onclick="openModal('Sunset Vibe','$349','Colores cálidos sofisticados.')"><img src="paleta2.jfif"></div>
+<div class="producto" onclick="openModal('Pink Dream','$320','Tonos rosados suaves.')"><img src="paleta3.jfif"></div>
+<div class="producto" onclick="openModal('Soft Glam','$310','Ideal para looks naturales.')"><img src="paleta4.jfif"></div>
+<div class="producto" onclick="openModal('Golden Touch','$360','Acabado luminoso premium.')"><img src="paleta5.jfif"></div>
+
 </div>
 </section>
 
@@ -191,8 +165,13 @@ En ValeryMKP buscamos ofrecer una experiencia sofisticada, donde la elegancia y 
 <section id="bases">
 <h2>Bases</h2>
 <div class="productos">
-<div class="producto" onclick="openModal('Skin Perfect','$279','Cobertura ligera con acabado natural.')"><img src="base1.jfif"></div>
-<div class="producto" onclick="openModal('Velvet Base','$289','Textura suave con acabado mate.')"><img src="base2.jfif"></div>
+
+<div class="producto" onclick="openModal('Skin Perfect','$279','Cobertura ligera.')"><img src="base1.jfif"></div>
+<div class="producto" onclick="openModal('Natural Skin','$259','Efecto piel natural.')"><img src="base2.jfif"></div>
+<div class="producto" onclick="openModal('Velvet Base','$289','Textura suave mate.')"><img src="base3.jfif"></div>
+<div class="producto" onclick="openModal('Matte Cover','$269','Alta cobertura.')"><img src="base4.jfif"></div>
+<div class="producto" onclick="openModal('Glow Finish','$299','Acabado luminoso.')"><img src="base5.jfif"></div>
+
 </div>
 </section>
 
@@ -200,8 +179,13 @@ En ValeryMKP buscamos ofrecer una experiencia sofisticada, donde la elegancia y 
 <section id="rimel">
 <h2>Rímel</h2>
 <div class="productos">
-<div class="producto" onclick="openModal('Lash Queen','$199','Define y alarga cada pestaña.')"><img src="rimel1.jfif"></div>
-<div class="producto" onclick="openModal('Volume Max','$189','Volumen intenso sin grumos.')"><img src="rimel2.jfif"></div>
+
+<div class="producto" onclick="openModal('Lash Queen','$199','Define pestañas.')"><img src="rimel1.jfif"></div>
+<div class="producto" onclick="openModal('Volume Max','$189','Volumen intenso.')"><img src="rimel2.jfif"></div>
+<div class="producto" onclick="openModal('Ultra Lash','$210','Alarga pestañas.')"><img src="rimel3.jfif"></div>
+<div class="producto" onclick="openModal('Bold Eyes','$195','Impacto visual.')"><img src="rimel4.jfif"></div>
+<div class="producto" onclick="openModal('Extreme Look','$220','Máximo volumen.')"><img src="rimel5.jfif"></div>
+
 </div>
 </section>
 
@@ -209,42 +193,41 @@ En ValeryMKP buscamos ofrecer una experiencia sofisticada, donde la elegancia y 
 <section id="labiales">
 <h2>Labiales</h2>
 <div class="productos">
-<div class="producto" onclick="openModal('Velvet Lips','$149','Acabado aterciopelado de larga duración.')"><img src="labial1.jfif"></div>
-<div class="producto" onclick="openModal('Pink Kiss','$139','Tono suave ideal para uso diario.')"><img src="labial2.jfif"></div>
+
+<div class="producto" onclick="openModal('Velvet Lips','$149','Acabado aterciopelado.')"><img src="labial1.jfif"></div>
+<div class="producto" onclick="openModal('Pink Kiss','$139','Tono suave.')"><img src="labial2.jfif"></div>
+<div class="producto" onclick="openModal('Red Passion','$159','Color intenso.')"><img src="labial3.jfif"></div>
+<div class="producto" onclick="openModal('Soft Nude','$145','Look natural.')"><img src="labial4.jfif"></div>
+<div class="producto" onclick="openModal('Gloss Shine','$130','Brillo ligero.')"><img src="labial5.jfif"></div>
+
 </div>
 </section>
 
-<!-- CONTACTO -->
 <section id="contacto" class="instagram">
 <h2>Contacto</h2>
 <p>Para realizar tu pedido comunícate con nosotros por Instagram.</p>
-<a href="https://instagram.com/valery.mkp" target="_blank">Instagram</a>
+<a href="https://instagram.com/valery.mkp">Instagram</a>
 </section>
-
-<footer>
-<p>© 2026 ValeryMKP</p>
-</footer>
 
 <!-- MODAL -->
 <div id="modal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal()">&times;</span>
-    <h3 id="titulo"></h3>
-    <p id="precio"></p>
-    <p id="descripcion"></p>
-  </div>
+<div class="modal-content">
+<span class="close" onclick="closeModal()">&times;</span>
+<h3 id="titulo"></h3>
+<p id="precio"></p>
+<p id="descripcion"></p>
+</div>
 </div>
 
 <script>
-function openModal(nombre, precio, descripcion){
-  document.getElementById('modal').style.display='block';
-  document.getElementById('titulo').innerText=nombre;
-  document.getElementById('precio').innerText=precio;
-  document.getElementById('descripcion').innerText=descripcion;
+function openModal(n,p,d){
+document.getElementById('modal').style.display='block';
+document.getElementById('titulo').innerText=n;
+document.getElementById('precio').innerText=p;
+document.getElementById('descripcion').innerText=d;
 }
-
 function closeModal(){
-  document.getElementById('modal').style.display='none';
+document.getElementById('modal').style.display='none';
 }
 </script>
 
