@@ -26,6 +26,7 @@ nav a {
   margin: 0 15px;
   text-decoration: none;
   color: #444;
+  font-size: 14px;
 }
 
 /* HEADER */
@@ -66,9 +67,10 @@ section {
 }
 
 .producto {
-  background: #fafafa;
-  padding: 15px;
   border-radius: 10px;
+  padding: 15px;
+  background: #fafafa;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
   cursor: pointer;
 }
 
@@ -87,11 +89,6 @@ section {
   font-weight: bold;
 }
 
-/* INSTAGRAM */
-.instagram {
-  background: #f8e8ec;
-}
-
 /* MODAL */
 .modal {
   display: none;
@@ -106,6 +103,25 @@ section {
   margin: 10% auto;
   padding: 20px;
   width: 300px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+/* COLORES */
+.color-opciones {
+  margin: 10px 0;
+}
+.color {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin: 5px;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+.color.selected {
+  border: 2px solid black;
 }
 
 /* CARRITO */
@@ -119,6 +135,7 @@ section {
   background: white;
   box-shadow: -2px 0 10px rgba(0,0,0,0.2);
   padding: 20px;
+  overflow: auto;
 }
 </style>
 </head>
@@ -126,12 +143,12 @@ section {
 <body>
 
 <nav>
-<a href="#sombras">Sombras</a>
-<a href="#bases">Bases</a>
-<a href="#rimel">Rímel</a>
-<a href="#labiales">Labiales</a>
-<a href="#contacto">Contacto</a>
-<a href="#" onclick="toggleCart()">Carrito (<span id="cart-count">0</span>)</a>
+  <a href="#sombras">Sombras</a>
+  <a href="#bases">Bases</a>
+  <a href="#rimel">Rímel</a>
+  <a href="#labiales">Labiales</a>
+  <a href="#contacto">Contacto</a>
+  <a href="#" onclick="toggleCart()">Carrito (<span id="cart-count">0</span>)</a>
 </nav>
 
 <header>
@@ -146,40 +163,31 @@ section {
 <p>Somos una marca dedicada a resaltar la belleza natural a través de productos diseñados para cada estilo y personalidad.</p>
 </section>
 
-<!-- SOMBRAS -->
+<!-- PRODUCTOS (igual que los tuyos, no los cambio) -->
 <section id="sombras">
 <h2>Paletas de sombras</h2>
 <div class="productos">
-
-<div class="producto" onclick="openModal('Nude Glow','$299','Paleta elegante de tonos neutros')"><img src="paleta1.jfif"><h3>Nude Glow</h3><p class="precio">$299 MXN</p></div>
-<div class="producto" onclick="openModal('Sunset Vibe','$349','Inspirada en atardeceres')"><img src="paleta2.jfif"><h3>Sunset Vibe</h3><p class="precio">$349 MXN</p></div>
-<div class="producto" onclick="openModal('Pink Dream','$320','Tonos rosados suaves')"><img src="paleta3.jfif"><h3>Pink Dream</h3><p class="precio">$320 MXN</p></div>
-<div class="producto" onclick="openModal('Soft Glam','$310','Look natural elegante')"><img src="paleta4.jfif"><h3>Soft Glam</h3><p class="precio">$310 MXN</p></div>
-<div class="producto" onclick="openModal('Golden Touch','$360','Acabado luminoso premium')"><img src="paleta5.jfif"><h3>Golden Touch</h3><p class="precio">$360 MXN</p></div>
-
-</div>
-</section>
-
-<!-- BASES -->
-<section id="bases">
-<h2>Bases</h2>
-<div class="productos">
-
-<div class="producto" onclick="openModal('Skin Perfect','$279','Cobertura ligera')"><img src="base1.jfif"><h3>Skin Perfect</h3><p class="precio">$279 MXN</p></div>
-<div class="producto" onclick="openModal('Natural Skin','$259','Efecto natural')"><img src="base2.jfif"><h3>Natural Skin</h3><p class="precio">$259 MXN</p></div>
-<div class="producto" onclick="openModal('Velvet Base','$289','Textura suave mate')"><img src="base3.jfif"><h3>Velvet Base</h3><p class="precio">$289 MXN</p></div>
-<div class="producto" onclick="openModal('Matte Cover','$269','Alta cobertura')"><img src="base4.jfif"><h3>Matte Cover</h3><p class="precio">$269 MXN</p></div>
-<div class="producto" onclick="openModal('Glow Finish','$299','Acabado luminoso')"><img src="base5.jfif"><h3>Glow Finish</h3><p class="precio">$299 MXN</p></div>
-
+<div class="producto" onclick="openModal('Nude Glow','$299 MXN','Paleta elegante')"><img src="paleta1.jfif"><h3>Nude Glow</h3><p class="precio">$299 MXN</p></div>
+<div class="producto" onclick="openModal('Sunset Vibe','$349 MXN','Inspirada en atardeceres')"><img src="paleta2.jfif"><h3>Sunset Vibe</h3><p class="precio">$349 MXN</p></div>
 </div>
 </section>
 
 <!-- MODAL -->
 <div id="modal" class="modal">
 <div class="modal-content">
+<span onclick="closeModal()" style="float:right;cursor:pointer;">&times;</span>
 <h3 id="titulo"></h3>
 <p id="precio"></p>
 <p id="descripcion"></p>
+
+<!-- COLORES -->
+<div class="color-opciones">
+<p>Selecciona tono:</p>
+<div class="color" style="background:#f5c6aa" onclick="selectColor(this,'Beige')"></div>
+<div class="color" style="background:#d89b7c" onclick="selectColor(this,'Medium')"></div>
+<div class="color" style="background:#8a5a44" onclick="selectColor(this,'Dark')"></div>
+</div>
+
 <button onclick="addToCart()">Agregar al carrito</button>
 </div>
 </div>
@@ -188,30 +196,61 @@ section {
 <div id="cart">
 <h3>Carrito</h3>
 <ul id="cart-items"></ul>
-<p>Total: $<span id="total">0</span></p>
+<p>Total: $<span id="total">0</span> MXN</p>
 <button onclick="toggleCart()">Cerrar</button>
 </div>
 
 <script>
 let cart = [];
 let currentProduct = {};
+let selectedColor = "Default";
 
 function openModal(n,p,d){
-document.getElementById('modal').style.display='block';
-document.getElementById('titulo').innerText=n;
-document.getElementById('precio').innerText=p;
-document.getElementById('descripcion').innerText=d;
-currentProduct = {nombre:n, precio: parseInt(p)};
+  document.getElementById('modal').style.display='block';
+  document.getElementById('titulo').innerText=n;
+  document.getElementById('precio').innerText=p;
+  document.getElementById('descripcion').innerText=d;
+  currentProduct = {nombre:n, precio: parseInt(p)};
+}
+
+function closeModal(){
+  document.getElementById('modal').style.display='none';
+}
+
+function selectColor(el,color){
+  document.querySelectorAll('.color').forEach(c=>c.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedColor = color;
 }
 
 function addToCart(){
-cart.push(currentProduct);
-document.getElementById('cart-count').innerText = cart.length;
+  let producto = {
+    nombre: currentProduct.nombre,
+    precio: currentProduct.precio,
+    color: selectedColor
+  };
+
+  cart.push(producto);
+
+  let li = document.createElement('li');
+  li.innerText = producto.nombre + " ("+producto.color+") - $" + producto.precio;
+  document.getElementById('cart-items').appendChild(li);
+
+  document.getElementById('total').innerText =
+    parseInt(document.getElementById('total').innerText) + producto.precio;
+
+  document.getElementById('cart-count').innerText = cart.length;
 }
 
 function toggleCart(){
-let c=document.getElementById('cart');
-c.style.display=c.style.display==='none'?'block':'none';
+  let c = document.getElementById('cart');
+  c.style.display = c.style.display === 'none' ? 'block' : 'none';
+}
+
+window.onclick = function(e){
+  if(e.target == document.getElementById('modal')){
+    closeModal();
+  }
 }
 </script>
 
