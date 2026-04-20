@@ -4,63 +4,76 @@
 <meta charset="UTF-8">
 <title>ValeryMKP</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
 <style>
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(to bottom, #fff0f5, #ffffff);
-  color: #333;
+  background: #ffffff;
+  color: #222;
 }
 
-/* HEADER AESTHETIC */
-header {
-  position: relative;
-  height: 400px;
-  background: url('https://images.unsplash.com/photo-1512496015851-a90fb38ba796') center/cover no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-header::before {
-  content: "";
-  position: absolute;
+/* NAVBAR */
+nav {
+  position: fixed;
+  top: 0;
   width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.45);
+  background: white;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 15px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  z-index: 1000;
+}
+
+nav a {
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+nav a:hover {
+  color: #c89aa5;
+}
+
+/* HEADER */
+header {
+  height: 450px;
+  background: url('portada.jfif') center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .header-content {
-  position: relative;
-  color: white;
   text-align: center;
-  animation: fade 1.5s ease-in-out;
+  color: white;
+  background: rgba(0,0,0,0.4);
+  padding: 20px 40px;
 }
 
 header h1 {
-  font-size: 55px;
+  font-family: 'Playfair Display', serif;
+  font-size: 60px;
   margin: 0;
-  letter-spacing: 2px;
 }
 
-header p {
-  font-size: 20px;
-  opacity: 0.9;
-}
-
-/* SECCIONES */
+/* SECTIONS */
 section {
-  padding: 60px 40px;
+  padding: 100px 40px;
   text-align: center;
 }
 
 h2 {
-  color: #e91e63;
-  margin-bottom: 30px;
-  font-size: 28px;
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  margin-bottom: 40px;
 }
 
-/* PRODUCTOS */
+/* PRODUCTS */
 .productos {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -68,151 +81,172 @@ h2 {
 }
 
 .producto {
-  background: white;
-  border-radius: 15px;
-  padding: 15px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  cursor: pointer;
   transition: 0.3s;
-  opacity: 0;
-  transform: translateY(30px);
-  animation: aparecer 0.8s ease forwards;
 }
 
 .producto:hover {
-  transform: scale(1.07);
+  transform: scale(1.05);
 }
 
 .producto img {
   width: 100%;
   height: 200px;
   object-fit: cover;
-  border-radius: 12px;
 }
 
-.producto h3 {
-  margin: 10px 0 5px;
+/* ABOUT */
+.about {
+  max-width: 600px;
+  margin: auto;
+  line-height: 1.6;
 }
 
-.precio {
-  color: #e91e63;
-  font-weight: bold;
+/* MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
 }
 
-/* INSTAGRAM */
-.instagram {
-  background: #ffe4ec;
-}
-
-.instagram a {
-  display: inline-block;
-  margin-top: 15px;
-  padding: 12px 25px;
-  background: #e91e63;
-  color: white;
-  text-decoration: none;
-  border-radius: 30px;
-  transition: 0.3s;
-}
-
-.instagram a:hover {
-  background: #c2185b;
-  transform: scale(1.1);
-}
-
-/* FOOTER */
-footer {
-  background: #ffe4ec;
-  padding: 20px;
-  font-size: 14px;
-}
-
-/* ANIMACIONES */
-@keyframes aparecer {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.modal-content {
+  background: white;
+  margin: 10% auto;
+  padding: 30px;
+  width: 300px;
+  text-align: center;
+  animation: fade 0.3s;
 }
 
 @keyframes fade {
   from {opacity: 0;}
   to {opacity: 1;}
 }
+
+.close {
+  float: right;
+  cursor: pointer;
+}
+
+/* INSTAGRAM */
+.instagram {
+  background: #f5f5f5;
+}
+
+.instagram a {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  border: 1px solid black;
+  text-decoration: none;
+  color: black;
+}
+
+footer {
+  padding: 20px;
+}
 </style>
 </head>
 
 <body>
 
+<nav>
+  <a href="#sombras">Sombras</a>
+  <a href="#bases">Bases</a>
+  <a href="#rimel">Rímel</a>
+  <a href="#labiales">Labiales</a>
+  <a href="#contacto">Contacto</a>
+</nav>
+
 <header>
   <div class="header-content">
     <h1>ValeryMKP</h1>
-    <p>Brilla a tu manera ✨</p>
   </div>
 </header>
 
-<section>
-  <h2>Sobre nosotros</h2>
-  <p>ValeryMKP nace de la idea de que la belleza debe sentirse auténtica, libre y única.</p>
+<section class="about">
+<h2>Sobre nosotros</h2>
+<p>
+Somos una marca dedicada a resaltar la belleza natural a través de productos diseñados para cada estilo y personalidad. 
+En ValeryMKP buscamos ofrecer una experiencia sofisticada, donde la elegancia y la autenticidad se reflejan en cada detalle.
+</p>
 </section>
 
 <!-- SOMBRAS -->
-<section>
+<section id="sombras">
 <h2>Paletas de sombras</h2>
 <div class="productos">
-<div class="producto"><img src="paleta1.jfif"><h3>Nude Glow</h3><p class="precio">$299 MXN</p></div>
-<div class="producto"><img src="paleta2.jfif"><h3>Sunset Vibe</h3><p class="precio">$349 MXN</p></div>
-<div class="producto"><img src="paleta3.jfif"><h3>Pink Dream</h3><p class="precio">$320 MXN</p></div>
-<div class="producto"><img src="paleta4.jfif"><h3>Soft Glam</h3><p class="precio">$310 MXN</p></div>
-<div class="producto"><img src="paleta5.jfif"><h3>Golden Touch</h3><p class="precio">$360 MXN</p></div>
+<div class="producto" onclick="openModal('Nude Glow','$299','Paleta de tonos neutros para un acabado elegante.')"><img src="paleta1.jfif"></div>
+<div class="producto" onclick="openModal('Sunset Vibe','$349','Colores cálidos inspirados en atardeceres.')"><img src="paleta2.jfif"></div>
+<div class="producto" onclick="openModal('Pink Dream','$320','Tonos rosados suaves y sofisticados.')"><img src="paleta3.jfif"></div>
 </div>
 </section>
 
 <!-- BASES -->
-<section>
+<section id="bases">
 <h2>Bases</h2>
 <div class="productos">
-<div class="producto"><img src="base1.jfif"><h3>Skin Perfect</h3><p class="precio">$279 MXN</p></div>
-<div class="producto"><img src="base2.jfif"><h3>Natural Skin</h3><p class="precio">$259 MXN</p></div>
-<div class="producto"><img src="base3.jfif"><h3>Velvet Base</h3><p class="precio">$289 MXN</p></div>
-<div class="producto"><img src="base4.jfif"><h3>Matte Cover</h3><p class="precio">$269 MXN</p></div>
-<div class="producto"><img src="base5.jfif"><h3>Glow Finish</h3><p class="precio">$299 MXN</p></div>
+<div class="producto" onclick="openModal('Skin Perfect','$279','Cobertura ligera con acabado natural.')"><img src="base1.jfif"></div>
+<div class="producto" onclick="openModal('Velvet Base','$289','Textura suave con acabado mate.')"><img src="base2.jfif"></div>
 </div>
 </section>
 
 <!-- RIMEL -->
-<section>
+<section id="rimel">
 <h2>Rímel</h2>
 <div class="productos">
-<div class="producto"><img src="rimel1.jfif"><h3>Lash Queen</h3><p class="precio">$199 MXN</p></div>
-<div class="producto"><img src="rimel2.jfif"><h3>Volume Max</h3><p class="precio">$189 MXN</p></div>
-<div class="producto"><img src="rimel3.jfif"><h3>Ultra Lash</h3><p class="precio">$210 MXN</p></div>
-<div class="producto"><img src="rimel4.jfif"><h3>Bold Eyes</h3><p class="precio">$195 MXN</p></div>
-<div class="producto"><img src="rimel5.jfif"><h3>Extreme Look</h3><p class="precio">$220 MXN</p></div>
+<div class="producto" onclick="openModal('Lash Queen','$199','Define y alarga cada pestaña.')"><img src="rimel1.jfif"></div>
+<div class="producto" onclick="openModal('Volume Max','$189','Volumen intenso sin grumos.')"><img src="rimel2.jfif"></div>
 </div>
 </section>
 
 <!-- LABIALES -->
-<section>
+<section id="labiales">
 <h2>Labiales</h2>
 <div class="productos">
-<div class="producto"><img src="labial1.jfif"><h3>Velvet Lips</h3><p class="precio">$149 MXN</p></div>
-<div class="producto"><img src="labial2.jfif"><h3>Pink Kiss</h3><p class="precio">$139 MXN</p></div>
-<div class="producto"><img src="labial3.jfif"><h3>Red Passion</h3><p class="precio">$159 MXN</p></div>
-<div class="producto"><img src="labial4.jfif"><h3>Soft Nude</h3><p class="precio">$145 MXN</p></div>
-<div class="producto"><img src="labial5.jfif"><h3>Gloss Shine</h3><p class="precio">$130 MXN</p></div>
+<div class="producto" onclick="openModal('Velvet Lips','$149','Acabado aterciopelado de larga duración.')"><img src="labial1.jfif"></div>
+<div class="producto" onclick="openModal('Pink Kiss','$139','Tono suave ideal para uso diario.')"><img src="labial2.jfif"></div>
 </div>
 </section>
 
-<!-- INSTAGRAM -->
-<section class="instagram">
+<!-- CONTACTO -->
+<section id="contacto" class="instagram">
 <h2>Contacto</h2>
-<p>Para realizar tu pedido comunícate con nosotros por Instagram 💄</p>
-<a href="https://instagram.com/TU_USUARIO" target="_blank">Ir a Instagram</a>
+<p>Para realizar tu pedido comunícate con nosotros por Instagram.</p>
+<a href="https://instagram.com/valery.mkp" target="_blank">Instagram</a>
 </section>
 
 <footer>
-<p>© 2026 ValeryMKP Beauty</p>
+<p>© 2026 ValeryMKP</p>
 </footer>
+
+<!-- MODAL -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h3 id="titulo"></h3>
+    <p id="precio"></p>
+    <p id="descripcion"></p>
+  </div>
+</div>
+
+<script>
+function openModal(nombre, precio, descripcion){
+  document.getElementById('modal').style.display='block';
+  document.getElementById('titulo').innerText=nombre;
+  document.getElementById('precio').innerText=precio;
+  document.getElementById('descripcion').innerText=descripcion;
+}
+
+function closeModal(){
+  document.getElementById('modal').style.display='none';
+}
+</script>
 
 </body>
 </html>
