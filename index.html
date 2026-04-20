@@ -7,11 +7,12 @@
 <style>
 body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: #fff;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to bottom, #fff0f5, #ffffff);
+  color: #333;
 }
 
-/* HEADER */
+/* HEADER AESTHETIC */
 header {
   position: relative;
   height: 400px;
@@ -26,53 +27,70 @@ header::before {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0.45);
 }
 
 .header-content {
   position: relative;
   color: white;
   text-align: center;
+  animation: fade 1.5s ease-in-out;
 }
 
 header h1 {
-  font-size: 50px;
+  font-size: 55px;
   margin: 0;
+  letter-spacing: 2px;
 }
 
 header p {
-  font-size: 22px;
+  font-size: 20px;
+  opacity: 0.9;
 }
 
 /* SECCIONES */
 section {
-  padding: 50px;
+  padding: 60px 40px;
   text-align: center;
 }
 
 h2 {
+  color: #e91e63;
   margin-bottom: 30px;
+  font-size: 28px;
 }
 
 /* PRODUCTOS */
 .productos {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
+  gap: 25px;
 }
 
 .producto {
-  border-radius: 10px;
+  background: white;
+  border-radius: 15px;
   padding: 15px;
-  background: #fafafa;
-  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  transition: 0.3s;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: aparecer 0.8s ease forwards;
+}
+
+.producto:hover {
+  transform: scale(1.07);
 }
 
 .producto img {
   width: 100%;
   height: 200px;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 12px;
+}
+
+.producto h3 {
+  margin: 10px 0 5px;
 }
 
 .precio {
@@ -82,22 +100,43 @@ h2 {
 
 /* INSTAGRAM */
 .instagram {
-  background: #f8e8ec;
+  background: #ffe4ec;
 }
 
 .instagram a {
   display: inline-block;
-  margin-top: 10px;
+  margin-top: 15px;
   padding: 12px 25px;
   background: #e91e63;
   color: white;
   text-decoration: none;
-  border-radius: 6px;
+  border-radius: 30px;
+  transition: 0.3s;
 }
 
+.instagram a:hover {
+  background: #c2185b;
+  transform: scale(1.1);
+}
+
+/* FOOTER */
 footer {
-  background: #f8e8ec;
+  background: #ffe4ec;
   padding: 20px;
+  font-size: 14px;
+}
+
+/* ANIMACIONES */
+@keyframes aparecer {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade {
+  from {opacity: 0;}
+  to {opacity: 1;}
 }
 </style>
 </head>
@@ -107,26 +146,24 @@ footer {
 <header>
   <div class="header-content">
     <h1>ValeryMKP</h1>
-    <p>Brilla a tu manera</p>
+    <p>Brilla a tu manera ✨</p>
   </div>
 </header>
 
 <section>
   <h2>Sobre nosotros</h2>
-  <p>ValeryMKP nace de la idea de que la belleza debe sentirse auténtica y libre.</p>
+  <p>ValeryMKP nace de la idea de que la belleza debe sentirse auténtica, libre y única.</p>
 </section>
 
 <!-- SOMBRAS -->
 <section>
 <h2>Paletas de sombras</h2>
 <div class="productos">
-
 <div class="producto"><img src="paleta1.jfif"><h3>Nude Glow</h3><p class="precio">$299 MXN</p></div>
 <div class="producto"><img src="paleta2.jfif"><h3>Sunset Vibe</h3><p class="precio">$349 MXN</p></div>
 <div class="producto"><img src="paleta3.jfif"><h3>Pink Dream</h3><p class="precio">$320 MXN</p></div>
 <div class="producto"><img src="paleta4.jfif"><h3>Soft Glam</h3><p class="precio">$310 MXN</p></div>
 <div class="producto"><img src="paleta5.jfif"><h3>Golden Touch</h3><p class="precio">$360 MXN</p></div>
-
 </div>
 </section>
 
@@ -134,13 +171,11 @@ footer {
 <section>
 <h2>Bases</h2>
 <div class="productos">
-
 <div class="producto"><img src="base1.jfif"><h3>Skin Perfect</h3><p class="precio">$279 MXN</p></div>
 <div class="producto"><img src="base2.jfif"><h3>Natural Skin</h3><p class="precio">$259 MXN</p></div>
 <div class="producto"><img src="base3.jfif"><h3>Velvet Base</h3><p class="precio">$289 MXN</p></div>
 <div class="producto"><img src="base4.jfif"><h3>Matte Cover</h3><p class="precio">$269 MXN</p></div>
 <div class="producto"><img src="base5.jfif"><h3>Glow Finish</h3><p class="precio">$299 MXN</p></div>
-
 </div>
 </section>
 
@@ -148,13 +183,11 @@ footer {
 <section>
 <h2>Rímel</h2>
 <div class="productos">
-
 <div class="producto"><img src="rimel1.jfif"><h3>Lash Queen</h3><p class="precio">$199 MXN</p></div>
 <div class="producto"><img src="rimel2.jfif"><h3>Volume Max</h3><p class="precio">$189 MXN</p></div>
 <div class="producto"><img src="rimel3.jfif"><h3>Ultra Lash</h3><p class="precio">$210 MXN</p></div>
 <div class="producto"><img src="rimel4.jfif"><h3>Bold Eyes</h3><p class="precio">$195 MXN</p></div>
 <div class="producto"><img src="rimel5.jfif"><h3>Extreme Look</h3><p class="precio">$220 MXN</p></div>
-
 </div>
 </section>
 
@@ -162,13 +195,11 @@ footer {
 <section>
 <h2>Labiales</h2>
 <div class="productos">
-
 <div class="producto"><img src="labial1.jfif"><h3>Velvet Lips</h3><p class="precio">$149 MXN</p></div>
 <div class="producto"><img src="labial2.jfif"><h3>Pink Kiss</h3><p class="precio">$139 MXN</p></div>
 <div class="producto"><img src="labial3.jfif"><h3>Red Passion</h3><p class="precio">$159 MXN</p></div>
 <div class="producto"><img src="labial4.jfif"><h3>Soft Nude</h3><p class="precio">$145 MXN</p></div>
 <div class="producto"><img src="labial5.jfif"><h3>Gloss Shine</h3><p class="precio">$130 MXN</p></div>
-
 </div>
 </section>
 
@@ -176,7 +207,7 @@ footer {
 <section class="instagram">
 <h2>Contacto</h2>
 <p>Para realizar tu pedido comunícate con nosotros por Instagram 💄</p>
-<a href="https://instagram.com/valery.mkp" target="_blank">Ir a Instagram</a>
+<a href="https://instagram.com/TU_USUARIO" target="_blank">Ir a Instagram</a>
 </section>
 
 <footer>
